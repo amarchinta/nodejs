@@ -4,7 +4,7 @@ const schema = mongoose.Schema;
 
 // create schema 
 
-const UserSchema = new Schema({
+const UserSchema = new schema({
 
      name :{
         type : String,
@@ -22,7 +22,7 @@ const UserSchema = new Schema({
         type : String,
     },
     date : {
-        type : date , 
+        type : Date , 
         default : Date.now
     },
 });
