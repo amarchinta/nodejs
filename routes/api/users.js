@@ -7,8 +7,8 @@ const keys = require("../../keys");
 const passport = require("passport");
 
 // load validation 
-const validatorRegisterInput = require('./validation/register');
-const validatorLoginInput = require('./validation/login');
+const validatorRegisterInput = require('./validation /register');
+const validatorLoginInput = require('./validation /login');
 
 
 
@@ -19,18 +19,18 @@ router.get("/test", (req, res) => res.json({ msg: "users works" }));
 
 router.post("/register", (req, res) => {
 
-  const {errors, isValid } = validatorRegisterInput(req.body); 
+  const { errors, isValid } = validatorRegisterInput(req.body);
 
   // check validation 
-  if(!isValid){
-return res.status(400).json( errors);
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
 
 
   const {
     body: { name, email, password },
   } = req;
-errors.email ="email already exists";
+  errors.email = "email already exists";
   User.findOne({ email }).then((user) => {
     if (user) {
       return res.status(400).json(errors);
@@ -66,11 +66,11 @@ errors.email ="email already exists";
 
 router.post("/login", (req, res) => {
 
-  const {errors, isValid } = validatorLoginInput(req.body); 
+  const { errors, isValid } = validatorLoginInput(req.body);
 
   // check validation 
-  if(!isValid){
-return res.status(400).json( errors);
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
 
   const {
@@ -103,7 +103,7 @@ return res.status(400).json( errors);
             }
           );
         } else {
-          errors.password ="password incorrect";
+          errors.password = "password incorrect";
           return res.status(400).json(errors);
         }
       });
